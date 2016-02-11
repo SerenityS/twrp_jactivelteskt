@@ -1,0 +1,13 @@
+#
+# system.prop for jactivelteskt
+#
+
+ro.secure=0
+ro.allow.mock.location=1
+ro.debuggable=1
+persist.sys.usb.config=adb
+
+ro.product.model=SHV-E470S
+ro.product.brand=samsung
+ro.product.name=jactivelteskt
+ro.product.device=jactivelte
