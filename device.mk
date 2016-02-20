@@ -6,6 +6,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 DEVICE_PACKAGE_OVERLAYS += device/samsung/jactivelteskt/overlay
 
 LOCAL_PATH := device/samsung/jactivelteskt
+
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
@@ -16,11 +17,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/fstab.qcom:recovery/root/fstab.qcom
-
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/recovery/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc \
-	$(LOCAL_PATH)/selinux/file_contexts:recovery/root/prebuilt_file_contexts
+	$(LOCAL_PATH)/selinux/file_contexts:recovery/root/prebuilt_file_contexts \
+    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab
 
 $(call inherit-product, build/target/product/full.mk)
 

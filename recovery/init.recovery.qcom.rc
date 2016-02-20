@@ -1,3 +1,10 @@
-on early-init
-    toolbox setenforce permissive
+on boot
+    # mount storage
+    mount ext4 /dev/block/mmcblk0p25 /data wait noatime nodiratime nosuid nodev discard,journal_async_commit,errors=panic
+    mount f2fs /dev/block/mmcblk0p25 /data wait noatime nodiratime nosuid nodev discard,background_gc=sync
+    mount ext4 /dev/block/mmcblk0p24 /cache wait noatime nodiratime nosuid nodev discard,journal_async_commit,errors=panic
+    mount f2fs /dev/block/mmcblk0p24 /cache wait noatime nodiratime nosuid nodev discard,background_gc=sync
+
+service permissivemode /sbin/setenforce 0
+    oneshot
 

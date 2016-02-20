@@ -37,28 +37,32 @@ TARGET_PREBUILT_KERNEL := device/samsung/jactivelteskt/kernel
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # TWRP
 RECOVERY_VARIANT := twrp
 TW_THEME := portrait_hdpi
 
-TARGET_RECOVERY_DEVICE_MODULES += init.recovery.usb.rc
+TARGET_RECOVERY_DEVICE_MODULES += init.recovery.usb.rc init.recovery.qcom.rc
 
 RECOVERY_SDCARD_ON_DATA := true
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
+RECOVERY_GRAPHICS_FORCE_USE_LINELENGTH := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TW_BRIGHTNESS_PATH := "/sys/devices/mdp.0/qcom\x2cmdss_fb_primary.181/leds/lcd-backlight/brightness"
-#TW_MAX_BRIGHTNESS := 255
+TW_MAX_BRIGHTNESS := 255
 
-TW_MTP_DEVICE := "/dev/usb_mtp_gadget"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/msm_dwc3/f9200000.dwc3/gadget/lun%d/file
 
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 
+TW_INCLUDE_FB2PNG := true
 TW_INCLUDE_L_CRYPTO := true
 
 TW_NO_EXFAT_FUSE := false
 TW_NO_EXFAT := false
+
+TW_EXTRA_LANGUAGES := true
 
 GET_RECOVERY_QCOM_RTC_FIX := true
 
